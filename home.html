@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Zoo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="front image.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header class="title-container">
+        <h1>WildLife Explorer</h1>
+        <p>Journey into the Heart of the Wild with AI-Powered Voice Assistant</p>
+    </header>
+
+    <nav class="button-container">
+        <a href="games.html">
+        <button onclick="navigate('games')">Games</button>
+    </a>
+        <a href="https://edu.cospaces.io/ZAD-VTY">
+        <button onclick="navigate('forest')">Explore Forest</button>
+    </a>
+    <button id="voice-assistant-btn" class="voice-assistant-btn">🎤 Voice Assistant</button>
+
+        <a href="quiz.html">
+        <button onclick="navigate('Quiz')">Quiz</button>
+    </a>
+
+        <a href="zoopedia.html">
+        <button onclick="navigate('zoopedia')">ZooPedia</button>
+    </a>
+
+    <a href="Animaltales.html">
+    <button onclick="navigate('Animal Tales')">Animal Tales</button>
+    </a>
+
+    <a href="Timecapsule.html">
+        <button onclick="navigate('Time Capsule')">Time Capsule</button>
+    </a>
+    
+    </nav>
+
+    <!-- Chat Button -->
+<button id="chatButton" onclick="toggleChat()">💬</button>
+
+<!-- Chat Container -->
+<div id="chatContainer">
+    <div class="chat-header">
+        Virtual Zoo Chat
+        <button class="close-btn" onclick="toggleChat()">✖</button>
+    </div>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Ask a question..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script src="chat.js"></script>
+
+
+    <footer>
+        <p>Bringing the Wild to Your Screen - Explore, Learn, and Discover!</p>
+    </footer>
+
+    <script src="voiceAssistant.js"></script>
+
+
+</body>
+</html>
