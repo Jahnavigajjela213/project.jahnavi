@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Tales</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #84fab0, #8fd3f4);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            font-size: 5em;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+        h2 {
+            font-family: 'Verdana', sans-serif;
+            font-size: 1.2em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin: 0;
+            padding: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Animal Sections */
+        .lion { background-image: url('lion3.jpg'); }
+        .tiger { background-image: url('tiger2.jpg'); }
+        .leopard { background-image: url('leapord1.jpg'); }
+        .elephant { background-image: url('elephant new.jpg'); }
+        .cheetah { background-image: url('cheetah2.jpg'); }
+        .monkey { background-image: url('monkey2.jpg'); }
+        .Wolf { background-image: url('wolf.jpg'); }
+        .giraffe { background-image: url('giraffe2.jpg'); }
+        .hippo { background-image: url('hippo2.jpg'); }
+        .bear { background-image: url('bear2.jpg'); }
+        .zebra { background-image: url('zebra new.jpg'); }
+        .crocodile { background-image: url('crocodile.jpg'); }
+        .peacock { background-image: url('peacock2.jpg'); }
+        .koala { background-image: url('kola2.jpg'); }
+        .panda { background-image: url('panda2.jpg'); }
+        .hyena { background-image: url('hyna2.jpg'); }
+        .redpanda { background-image: url('redpanda2.jpg'); }
+        .flamingo { background-image: url('flamingo2.jpg'); }
+        .rhino { background-image: url('rhino new.jpg'); }
+
+        section {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 250px;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
+            overflow: hidden;
+        }
+        section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Scrollable Animal Sections */
+        .animal-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px;
+            gap: 20px;
+            white-space: nowrap;
+        }
+
+        section {
+            flex: 0 0 auto;
+            width: 250px;
+            scroll-snap-align: center;
+        }
+
+        /* Modal Styles */
+        /* Hidden by default */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        /* Close Button */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Video Styles */
+        .modal-video {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section {
+                width: 90%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Animal Tales</h1>
+
+    <div class="animal-container">
+        <!-- Animal sections with data-video added -->
+        <section class="lion" data-animal="The Brave Leo 🦁" data-description="Leo was once a tiny, scruffy cub found abandoned near a safari lodge in Africa. Rescued by kind rangers, he was too young to survive on his own. He was flown to the zoo, where he grew into a magnificent, golden-maned lion." data-video="talelion.mp4" data-sound="lionsound2.mp3">
+            <h2>The Brave Lion</h2>
+        </section>
+        
+        <section class="tiger" data-animal="The Fearless Tiggy 🐯" data-description="Tiggy was rescued from an illegal pet trade operation. When found, he was just a few weeks old, hiding inside a tiny crate. After a long journey, he found a home at the zoo, where he now enjoys splashing in the pool ." data-video="tiger.mp4" data-sound="tigersound.mp3">
+            <h2>The Fearless Tiger</h2>
+        </section>
+        
+        <section class="leopard" data-animal="The Spotty Spots 🐆" data-description="Spots was a mischievous cub who had a habit of sneaking into a village and stealing food. Locals called the wildlife team for help, and instead of being left in danger, he was brought to the zoo, where he now climbs trees." data-video="lepord2.mp4" data-sound="lepardsound.mp3">
+            <h2>The Spotted Leopard</h2>
+        </section>
+        
+        <section class="elephant" data-animal="The Majestic Trunky 🐘" data-description="Trunky was found stuck in a mud pit after heavy rains. Rescuers worked for hours to pull her out, and when she was too weak to get back to wild, the zoo welcomed her. She now loves painting with her trunk and getting watermelon treats!." data-video="elephant.mp4" data-sound="elephantssound.mp3">
+            <h2>The Majestic Elephant</h2>
+        </section>
+        
+        <section class="cheetah" data-animal="The Swift Flash 🐆" data-description="Flash was the tiniest cub, struggling to keep up with his siblings. Rescued and brought to the zoo. Each day, his legs grew stronger as he chased them through the grass. Now, he’s the fastest little cheetah, but he still loves chasing butterflies!. " data-video="cheetah.mp4" data-sound="cheetahsound.mp3">
+            <h2>The Swift Cheetah</h2>
+        </section>
+        
+        <section class="monkey" data-animal="The Playful Momo 🐒" data-description=" Momo was found lost in a bustling marketplace, stealing bananas from a fruit cart. Rescued and brought to the zoo, he quickly became the cheekiest little prankster. He loves swinging upside down and sneaking hats from zookeepers. !. " data-video="monkey.mp4" data-sound="monkeysound.mp3">
+            <h2>The Playful Monkey</h2>
+        </section>
+        
+        <section class="Wolf" data-animal="The Silver Fang Strom 🐺" data-description="Lost and starving after a wildfire destroyed his forest home, Storm wandered into a village searching for food. Rescuers found him curled up near a barn. Now at the zoo, this once-lone wolf has found a new pack among his caretakers." data-video="wolf.mp4" data-sound="wolfsound.mp3">
+            <h2>The Silver Fang Wolf</h2>
+        </section>
+        
+        <section class="giraffe" data-animal="The Tall Raffy 🦒" data-description="Raffy was born at the zoo but had a hard time standing up at first. Zookeepers helped her practice walking by holding up her wobbly legs. Now, she towers over everyone and loves to give gentle nose boops to visitors." data-video="giraffe.mp4" data-sound="giraffesound.mp3">
+            <h2>The Tall Giraffe</h2>
+        </section>
+        
+        <section class="hippo" data-animal="The Massive Bubbles 🦛" data-description="Bubbles was rescued from a drought-stricken area where water sources had dried up. Too weak to find food, she was brought to the zoo, where she discovered a love for bubble baths (hence the name!)." data-video="hippo.mp4" data-sound="hippsound.mp3">
+            <h2>The Massive Hippo</h2>
+        </section>
+        
+        <section class="bear" data-animal="The Mighty Honey 🐻" data-description="Found raiding beehives near a village, Honey got her name from her love of honeycombs. Instead of being chased away, she was relocated to the zoo, where she enjoys honey-dipped fruits and taking long naps in the shade." data-video="bear.mp4" data-sound="bearsound.mp3">
+            <h2>The Mighty Bear</h2>
+        </section>
+        
+        <section class="zebra" data-animal="The Striped Zebra 🦓" data-description=" Stripes was found injured after being separated from his herd. Zoo veterinarians nursed him back to health, and now he gallops around his enclosure, always first in line for his favorite carrot treats." data-video="zebra.mp4" data-sound="zebrasound.mp3">
+            <h2>The Striped Zebra</h2>
+        </section>
+        
+        <section class="crocodile" data-animal="The Fearsome Snappy 🐊" data-description="Snappy was a tiny baby croc who mistakenly wandered into a swimming pool at a resort. He was safely relocated to the zoo, where he grew into a strong and healthy croc with a soft spot for sunbathing on his favorite rock." data-video="crocodile.mp4" data-sound="crocodilesound.mp3">
+            <h2>The Fearsome Crocodile</h2>
+        </section>
+        
+        <section class="peacock" data-animal="The Colorful Peppy🦚" data-description="Peppy was a lost peacock who appeared at a zoo entrance one day, strutting around like he owned the place. When no one claimed him, the zoo gave him a permanent home, where he loves to show off his dazzling feathers." data-video="peacock.mp4" data-sound="peacocksound.mp3">
+            <h2>The Colorful Peacock</h2>
+        </section>
+        
+        <section class="koala" data-animal="The Sleepy Kikki 🐨" data-description="Kiki was rescued from a wildfire zone, dehydrated and scared. Now, she enjoys a peaceful life in the zoo, spending most of her time snuggled up in a eucalyptus tree with a content little smile." data-video="cola.mp4" data-sound="koalasound.mp3">
+            <h2>The Sleepy Koala</h2>
+        </section>
+        
+        <section class="panda" data-animal="The Gentle Puffy 🐼" data-description=" Puffy was born in a conservation center but needed extra care since he was the tiniest cub in the nursery. He traveled to the zoo, where he became famous for his silly somersaults and love for rolling around in bamboo leaves." data-video="panda.mp4" data-sound="pandasounds.mp3">
+            <h2>The Gentle Panda</h2>
+        </section>
+        
+        <section class="hyena" data-animal="The Laughing Giggles 🐆" data-description="Giggles was found alone as a pup, laughing at her own reflection in a pond. She was brought to the zoo, where she now leads a small pack and still giggles every time she gets excited over mealtime." data-video="hyena.mp4" data-sound="hyenasound.mp3">
+            <h2>The Laughing Hyena</h2>
+        </section>
+        
+        <section class="redpanda" data-animal="Cinnamon the Red Panda" data-description="Cinnamon was found alone after a heavy storm swept through his forest. Weak and hungry, he was brought to the zoo.He was given his very own cozy treehouse.But soon, he discovered his love for sneaking extra snacks." data-video="redpanda.mp4" data-sound="redpandasound.mp3">
+            <h2>The Red Panda</h2>
+        </section>
+        
+        <section class="flamingo" data-animal="The Elegant Flossy 🦩" data-description=" Flossy was different from the other flamingos—when she was first rescued, her feathers were a pale gray, and she didn’t know how to stand on one leg! The zoo took special care of her, giving her plenty of shrimp and sunlight to help her feathers turn bright pink." data-video="flamingo.mp4" data-sound="flamingosound.mp3">
+            <h2>The Elegant Flamingo</h2>
+        </section>
+        
+        <section class="rhino" data-animal="The Mighty Spike" data-description="Spike was orphaned at a young age and had trouble finding food in the wild. Rescued by conservationists, he was brought to the zoo, where he now enjoys mud baths and pushing around giant logs like a playful bulldozer.." data-video="rhino.mp4" data-sound="rhinosound.mp3">
+            <h2>The Mighty Rhino</h2>
+        </section>
+
+    </div>
+    
+    
+    
+
+    <!-- Modal HTML structure -->
+    <div id="animalModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <video id="modal-video" class="modal-video" controls>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("animalModal");
+
+        // Get the close button
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get all the animal sections
+        var animalSections = document.querySelectorAll('section');
+
+        // Loop through each animal section and add a click event
+        animalSections.forEach(function(section) {
+            section.addEventListener('click', function() {
+                var animalName = this.getAttribute('data-animal');
+                var animalDescription = this.getAttribute('data-description');
+                var videoUrl = this.getAttribute('data-video');
+
+                // Update the modal content
+                document.getElementById("modal-title").textContent = animalName;
+                document.getElementById("modal-description").textContent = animalDescription;
+
+                // Set the video URL
+                var modalVideo = document.getElementById("modal-video");
+                modalVideo.src = videoUrl;
+
+                // Display the modal
+                modal.style.display = "block";
+            });
+        });
+
+        // When the user clicks on the close button, close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            // Stop video when modal is closed
+            document.getElementById("modal-video").pause();
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                // Stop video when modal is closed
+                document.getElementById("modal-video").pause();
+            }
+        }
+       
+    </script>
+      <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modal = document.getElementById("animalModal");
+        var modalTitle = document.getElementById("modal-title");
+        var modalDescription = document.getElementById("modal-description");
+        var modalVideo = document.getElementById("modal-video");
+        var closeModal = document.getElementsByClassName("close")[0];
+        var animalSections = document.querySelectorAll("section");
+
+        let currentAudio = null; // Store the currently playing audio
+        let audioMap = {}; // Store audio elements for each sound file
+
+        // Preload audio for all sections
+        animalSections.forEach(function(section) {
+            var soundFile = section.getAttribute("data-sound");
+            if (soundFile) {
+                audioMap[soundFile] = new Audio(soundFile);
+                audioMap[soundFile].preload = "auto"; // Preload audio to reduce delay
+            }
+        });
+
+        // Function to handle user interaction before playing sounds
+        function enableAudioPlayback() {
+            document.body.removeEventListener("click", enableAudioPlayback); // Remove event listener after first click
+        }
+
+        // Require user interaction before playing audio
+        document.body.addEventListener("click", enableAudioPlayback);
+
+        animalSections.forEach(function(section) {
+            section.addEventListener("mouseenter", function() {
+                var soundFile = this.getAttribute("data-sound");
+
+                if (soundFile && audioMap[soundFile]) {
+                    // Stop previous sound if any
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+
+                    // Play preloaded sound
+                    currentAudio = audioMap[soundFile];
+                    currentAudio.volume = 0.5;
+                    currentAudio.play().catch(error => console.log("Autoplay blocked:", error));
+                }
+            });
+
+            section.addEventListener("mouseleave", function() {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                }
+            });
+
+            // Open modal on click
+            section.addEventListener("click", function() {
+                var animalName = this.getAttribute("data-animal");
+                var animalDescription = this.getAttribute("data-description");
+                var videoUrl = this.getAttribute("data-video");
+
+                modalTitle.textContent = animalName;
+                modalDescription.textContent = animalDescription;
+                modalVideo.src = videoUrl;
+                modal.style.display = "block";
+            });
+        });
+
+        // Close modal when clicking the close button
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+            modalVideo.pause(); // Stop video playback
+        };
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                modalVideo.pause();
+            }
+        };
+    });
+</script>
+<!-- Link to your JavaScript file for any game interactions -->
+
+        <!-- Voice Assistant Button -->
+        <button id="voice-assistant-btn" style="position: fixed; bottom: 20px; right: 20px; background: #fff; border: 2px solid #000; border-radius: 50%; padding: 10px;">
+            🎤
+        </button>
+        
+        <!-- Link to the JavaScript file -->
+        <script src="animaltalesVoiceAssistant.js" defer></script>
+
+</body>
+</html>
